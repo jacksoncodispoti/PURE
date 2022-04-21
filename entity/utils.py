@@ -119,6 +119,7 @@ def convert_dataset_to_samples(dataset, max_span_length, ner_label2id=None, cont
                     if (i, j) not in sent_ner:
                         sample['spans_label'].append(0)
                     else:
+                        print(sent_ner[(i,j)] in ner_label2id)
                         sample['spans_label'].append(ner_label2id[sent_ner[(i, j)]])
             samples.append(sample)
     avg_length = sum([len(sample['tokens']) for sample in samples]) / len(samples)

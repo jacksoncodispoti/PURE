@@ -5,7 +5,7 @@ import sys
 import random
 import logging
 import time
-from tqdm import tqdm
+#from tqdm import tqdm
 import numpy as np
 
 from shared.data_structures import Dataset
@@ -116,7 +116,7 @@ def setseed(seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--task', type=str, default=None, required=True, choices=['ace04', 'ace05', 'scierc'])
+    parser.add_argument('--task', type=str, default=None, required=True, choices=['ace04', 'ace05', 'scierc', 'chemprot'])
 
     parser.add_argument('--data_dir', type=str, default=None, required=True, 
                         help="path to the preprocessed dataset")
@@ -188,12 +188,14 @@ if __name__ == '__main__':
     logger.info(sys.argv)
     logger.info(args)
     
+    print(task_ner_labels[args.task])
     ner_label2id, ner_id2label = get_labelmap(task_ner_labels[args.task])
     
     num_ner_labels = len(task_ner_labels[args.task]) + 1
     model = EntityModel(args, num_ner_labels=num_ner_labels)
 
     dev_data = Dataset(args.dev_data)
+    print(ner_label2id)
     dev_samples, dev_ner = convert_dataset_to_samples(dev_data, args.max_span_length, ner_label2id=ner_label2id, context_window=args.context_window)
     dev_batches = batchify(dev_samples, args.eval_batch_size)
 
@@ -217,10 +219,12 @@ if __name__ == '__main__':
         tr_examples = 0
         global_step = 0
         eval_step = len(train_batches) // args.eval_per_epoch
-        for _ in tqdm(range(args.num_epoch)):
+        #for _ in tqdm(range(args.num_epoch)):
+        for _ in range(args.num_epoch):
             if args.train_shuffle:
                 random.shuffle(train_batches)
-            for i in tqdm(range(len(train_batches))):
+            #for i in tqdm(range(len(train_batches))):
+            for i in range(len(train_batches)):
                 output_dict = model.run_batch(train_batches[i], training=True)
                 loss = output_dict['ner_loss']
                 loss.backward()

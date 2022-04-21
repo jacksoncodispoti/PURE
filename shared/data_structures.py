@@ -282,7 +282,8 @@ class AtomicRelation:
         return cls(ent0, ent1, label)
 
     def __repr__(self):
-        return f"({self.ent0} | {self.ent1} | {self.label})"
+        return "({} | {} | {})".format(self.ent0, self.ent1, self.label)
+        #return f"({self.ent0} | {self.ent1} | {self.label})"
 
 
 
@@ -360,7 +361,8 @@ class Cluster:
         self.cluster_id = cluster_id
 
     def __repr__(self):
-        return f"{self.cluster_id}: " + self.members.__repr__()
+        return "{}: {}".format(self.cluster_id, self.members.__repr__())
+        #return f"{self.cluster_id}: " + self.members.__repr__()
 
     def __getitem__(self, ix):
         return self.members[ix]
@@ -374,7 +376,8 @@ class ClusterMember:
         self.cluster_id = cluster_id
 
     def __repr__(self):
-        return f"<{self.sentence.sentence_ix}> " + self.span.__repr__()
+        return "<{}> {}".format(self.sentence.sentence_ix, self.span.__repr__())
+        #return f"<{self.sentence.sentence_ix}> " + self.span.__repr__()
 
 
 ####################
