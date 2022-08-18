@@ -1,4 +1,4 @@
-# Entity and Relation Extraction in Biomedial Domain
+# Entity and Relation Extraction in Biomedical Domain
 Group member: Xu Tao, Jackson Codispoti, Yuhang Jiang, Yue Li
 
 This work aims to develop an end-to-end approach for the Named Entity Recognition(NER) and Relation Exaction(RE) for the Biomedical data.  
