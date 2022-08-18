@@ -1,5 +1,5 @@
 # Entity and Relation Extraction in Biomedial Domain
-Group member: Xu Tao, Jackson Codispoti, Yuhang Jiang, Yue Lie
+Group member: Xu Tao, Jackson Codispoti, Yuhang Jiang, Yue Li
 
 This work aims to develop an end-to-end approach for the Named Entity Recognition(NER) and Relation Exaction(RE) for the Biomedical data.  
 This repository is a fork of PURE(https://github.com/princeton-nlp/PURE).  Based on that, we extended the work by training three state-of-the-art encoders: Bert-base, Scibert, Biobert. The trained models along with their training log,  evaluation results  are saved into the directory chemprot_bert_base_models, chemprot_scibert_models and chemprot_biobert_models respectively. In the results folder, there are all the relevant outputs from the training phase, evaluation phase, and the end to end evaluation. We hope this work can be considered as a new baseline of the end-to-end approach on biomedical dataset.  
